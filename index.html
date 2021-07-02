@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pioner Bank</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <h1 class="text-center mb-5">Wellcome to Pioner Bank</h1>
+                <div id="login-area">
+                    <h2>Login</h2>
+                    <input type="text" class="form-control mb-3" placeholder="Email">
+                    <input type="password" class="form-control mb-3" placeholder="Password">
+                    <button id="login-btn" class="btn btn-success">Login</button>
+                </div>
+                <div id="transaction-area">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="deposit">
+                                <h5>Deposit</h5>
+                                <h1>$<span id="currentDeposit">00</span></h1>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="Withdraw">
+                                <h5>Withdraw</h5>
+                                <h1>$<span id="currentWithdraw">00</span></h1>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="Balence">
+                                <h5>Balence</h5>
+                                <h1>$<span id="currentbalence">1200</span></h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="deposit-area p-5">
+                                <h5>Deposit</h5>
+                                <input id="depositValue" type="text" class="form-control my-3" placeholder="$ amount you want to deposit">
+                                <button id="addDeposit" class="btn btn-success">Deposit</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="withdraw-area p-5">
+                                <h5>Withdraw</h5>
+                                <input id="withdrawValue" type="text" class="form-control my-3" placeholder="$ amount you want to withdraw">
+                                <button id="addWithdraw" class="btn btn-success">Withdraw</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // styles
+        const loginBtn = document.getElementById("login-btn");
+        loginBtn.addEventListener("click", function(){
+            setInterval(function(){
+                const loginArea = document.getElementById("login-area");
+                loginArea.style.opacity = "0";
+                loginArea.style.display = "none";
+            }, 1000);
+            setInterval(function(){
+                const transactionArea = document.getElementById("transaction-area");
+                transactionArea.style.opacity = "1";
+                transactionArea.style.visibility = "visible";
+            }, 1000)
+            
+        })
+        
+        // Add deposit function
+        const depositBtn = document.getElementById("addDeposit");
+        depositBtn.addEventListener("click", function(){
+            const depositAmount = document.getElementById("depositValue").value;
+            const depositNumber = parseFloat(depositAmount);
+
+            updateSpanText("currentDeposit", depositNumber);
+            updateSpanText("currentbalence", depositNumber);
+
+            document.getElementById("depositValue").value = "";
+            
+        })
+        //withdraw event handler
+        const withdrawBtn = document.getElementById("addWithdraw");
+        withdrawBtn.addEventListener("click",function(){
+            const withdrawAmount = document.getElementById("withdrawValue").value;
+            const withdrawNumber = parseFloat(withdrawAmount);
+
+            updateSpanText("currentWithdraw", withdrawNumber);
+            updateSpanText("currentbalence", -1 * withdrawNumber);
+
+            document.getElementById("withdrawValue").value = "";
+        })
+        function updateSpanText(id, depositNumber){
+                const current = document.getElementById(id).innerText;
+                const currentNumber = parseFloat(current);
+                const totalAmount = depositNumber + currentNumber;
+                document.getElementById(id).innerText = totalAmount;
+        }
+        
+        
+    </script>
+</body>
+</html>

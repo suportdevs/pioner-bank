@@ -1,0 +1,43 @@
+body{
+    padding: 100px;
+}
+div#login-area {
+    padding: 50px;
+    box-shadow: 4px 4px 10px gray;
+    border-radius: 10px;
+    opacity: 1;
+    transition: 3s ease-out;
+    
+}
+#transaction-area{
+    opacity: 0;
+    transition: 3s ease-out;
+    visibility: hidden;
+}
+.deposit {
+    background: slateblue;
+    border-radius: 20px;
+    margin: 0 30px;
+    padding: 20px;
+    color: #fff;
+}
+.Withdraw {
+    background: lightcoral;
+    border-radius: 20px;
+    margin: 0 30px;
+    padding: 20px;
+    color: #fff;
+}
+.Balence {
+    background: orange;
+    border-radius: 20px;
+    margin: 0 30px;
+    padding: 20px;
+    color: #fff;
+}
+.deposit-area, .withdraw-area {
+    box-shadow: 4px 4px 10px gray;
+    border-radius: 10px;
+    margin: 20px;
+    margin-top: 60px;
+}
