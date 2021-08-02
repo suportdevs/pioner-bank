@@ -83,10 +83,15 @@
             const depositAmount = document.getElementById("depositValue").value;
             const depositNumber = parseFloat(depositAmount);
 
-            updateSpanText("currentDeposit", depositNumber);
-            updateSpanText("currentbalence", depositNumber);
+            if(depositNumber < 0){
+                alert("Deposit number cannot be Negative.");
+            }
+            else{
+                updateSpanText("currentDeposit", depositNumber);
+                updateSpanText("currentbalence", depositNumber);
 
-            document.getElementById("depositValue").value = "";
+                document.getElementById("depositValue").value = "";
+            }
             
         })
         //withdraw event handler
@@ -95,10 +100,16 @@
             const withdrawAmount = document.getElementById("withdrawValue").value;
             const withdrawNumber = parseFloat(withdrawAmount);
 
-            updateSpanText("currentWithdraw", withdrawNumber);
-            updateSpanText("currentbalence", -1 * withdrawNumber);
+            if(withdrawNumber < 0){
+                alert("Withdraw number cannot be Negative.");
+            }
+            else{
+                updateSpanText("currentWithdraw", withdrawNumber);
+                updateSpanText("currentbalence", -1 * withdrawNumber);
 
-            document.getElementById("withdrawValue").value = "";
+                document.getElementById("withdrawValue").value = "";
+            }
+            
         })
         function updateSpanText(id, depositNumber){
                 const current = document.getElementById(id).innerText;
